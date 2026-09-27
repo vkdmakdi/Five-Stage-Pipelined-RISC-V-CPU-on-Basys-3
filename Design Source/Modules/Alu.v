@@ -1,3 +1,4 @@
+`timescale 1ns / 1ps
 module alu (
     input  wire [31:0] a,
     input  wire [31:0] b,
@@ -22,7 +23,7 @@ module alu (
             4'b0011: result = ($signed(a) < $signed(b)) ? 32'd1 : 32'd0; // SLT
             4'b0100: result = (a < b) ? 32'd1 : 32'd0;         // SLTU
 
-            // Logic
+            // Logic 
             4'b0101: result = a ^ b;                           // XOR
             4'b1000: result = a | b;                           // OR
             4'b1001: result = a & b;                           // AND
