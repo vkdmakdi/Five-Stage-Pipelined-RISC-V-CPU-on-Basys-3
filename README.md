@@ -2,7 +2,7 @@
 
 A Verilog implementation of a five-stage, 32-bit RISC-V processor, simulated with a self-checking instruction test and demonstrated on a Digilent Basys 3 Artix-7 FPGA.
 
-The project focuses on the parts of a pipelined CPU that make it interesting to build and verify: data forwarding, load-use hazard handling, branch and jump redirection, and pipeline flushing. On the board, the eight user LEDs display the low eight word-address bits of the program counter, making CPU progress visible without external debug hardware.
+The project focuses on the parts of a pipelined CPU to build and verify: data forwarding, load-use hazard handling, branch and jump redirection, and pipeline flushing. On the board, the eight user LEDs display the low eight word-address bits of the program counter, making CPU progress visible without external debug hardware.
 
 ## Highlights
 
@@ -91,15 +91,6 @@ riscv_cpu.srcs/
 3. Check the Tcl Console or simulation log for the testbench `PASS` message.
 
 The simulation source set includes `cpu_tb.v` and `test.mem`. If running simulation from a different tool or working directory, ensure the `test.mem` initialization file is available in the simulator’s working directory because the CPU loads it with `$readmemh("test.mem", imem)`.
-
-## Build and run on the Basys 3
-
-1. Open `riscv_cpu.xpr` in Vivado and confirm the active part is `xc7a35tcpg236-1`.
-2. Confirm `basys3.xdc` is enabled and attached to the implementation fileset.
-3. Run **Generate Bitstream** and wait for synthesis, implementation, and bitstream generation to complete.
-4. Connect and power the Basys 3 through its programming USB connection.
-5. Open **Hardware Manager**, select **Open Target → Auto Connect**, then choose **Program Device** and select the generated `.bit` file for `xc7a35t_0`.
-6. Observe LD0–LD7. They show `debug_pc[9:2]` and change as the CPU executes the initialized program. Press the center pushbutton to reset the CPU.
 
 ## Basys 3 pin mapping
 
